@@ -1,4 +1,4 @@
-package com.example.taskbeats
+package com.example.taskbeats.data
 
 import android.app.ActivityManager.TaskDescription
 import android.icu.text.CaseMap.Title

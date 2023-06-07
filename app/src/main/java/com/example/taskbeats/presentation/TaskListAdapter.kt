@@ -1,4 +1,4 @@
-package com.example.taskbeats
+package com.example.taskbeats.presentation
 
 import android.view.LayoutInflater
 import android.view.View
@@ -7,6 +7,8 @@ import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.ListAdapter
+import com.example.taskbeats.R
+import com.example.taskbeats.data.Task
 
 class TaskListAdapter(
     private val openTaskDetailView:(task: Task) -> Unit
