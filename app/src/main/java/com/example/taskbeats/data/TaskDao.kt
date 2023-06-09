@@ -1,5 +1,6 @@
 package com.example.taskbeats.data
 
+import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
@@ -16,7 +17,7 @@ interface TaskDao {
 
     //8 - lista de task
     @Query("Select * from task")
-    fun getAll(): List<Task>
+    fun getAll(): LiveData<List<Task>>
 
     // 12 update - encontrar tarrefa que queremos alterar
     @Update(onConflict = OnConflictStrategy.REPLACE)
