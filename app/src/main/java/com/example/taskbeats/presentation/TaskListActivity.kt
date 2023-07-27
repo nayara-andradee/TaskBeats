@@ -44,13 +44,12 @@ class TaskListActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_task_list)
         setSupportActionBar(findViewById(R.id.toolbar))
-
-        //9 - faz parte da acao 9
         cntContent = findViewById(R.id.ctn_content)
 
         val rvTask: RecyclerView = findViewById(R.id.rv_task_list)
         rvTask.adapter = adapter
 
+        //botao
         val fab: FloatingActionButton = findViewById<FloatingActionButton>(R.id.fab_add)
         fab.setOnClickListener {
             openTaskListDetail(null)
@@ -78,7 +77,7 @@ class TaskListActivity : AppCompatActivity() {
                 adapter.submitList(listTasks)
             }
             //live data
-        viewModel.TaskListLiveData.observe(this@TaskListActivity, listObserver)
+        viewModel.taskListLiveData.observe(this@TaskListActivity, listObserver)
     }
     private fun showMessange(view: View, message: String){
         Snackbar.make(view, message, Snackbar.LENGTH_LONG)

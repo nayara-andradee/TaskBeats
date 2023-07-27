@@ -2,17 +2,22 @@ package com.example.taskbeats.presentation
 
 import android.app.Application
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.ServiceLifecycleDispatcher
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.taskbeats.TaskBeatsApplication
 import com.example.taskbeats.data.Task
 import com.example.taskbeats.data.TaskDao
+import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class TaskListViewModel(private val taskDao: TaskDao): ViewModel() {
+class TaskListViewModel(
+    private val taskDao: TaskDao,
+    private val dispatcher: CoroutineDispatcher = Dispatchers.IO
+    ): ViewModel() {
 
-    val TaskListLiveData: LiveData<List<Task>> = taskDao.getAll()
+    val taskListLiveData: LiveData<List<Task>> = taskDao.getAll()
 
     fun execute(taskAction: TaskAction) {
         when (taskAction.actionType) {
@@ -24,24 +29,24 @@ class TaskListViewModel(private val taskDao: TaskDao): ViewModel() {
     }
 
     private fun deleteById(id: Int) {
-            viewModelScope.launch(Dispatchers.IO) {
+            viewModelScope.launch(dispatcher) {
                 taskDao.deleteById(id)
         }
     }
 
         private fun insertIntoDataBase(task: Task){
-            viewModelScope.launch(Dispatchers.IO) {
+            viewModelScope.launch(dispatcher) {
                 taskDao.insert(task)
                 //listar/atualizar
             }
         }
         private fun updateIntoDataBase(task: Task) {
-            viewModelScope.launch(Dispatchers.IO) {
+            viewModelScope.launch(dispatcher) {
                 taskDao.update(task)
             }
         }
     private fun deleteAll(){
-            viewModelScope.launch(Dispatchers.IO) {
+            viewModelScope.launch(dispatcher) {
                 taskDao.deleteAll()
         }
     }
