@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.ListAdapter
 import com.example.taskbeats.R
-import com.example.taskbeats.data.Task
+import com.example.taskbeats.data.local.local.Task
 
 class TaskListAdapter(
     private val openTaskDetailView:(task: Task) -> Unit

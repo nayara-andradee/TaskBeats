@@ -2,7 +2,7 @@ package com.example.taskbeats
 
 import android.app.Application
 import androidx.room.Room
-import com.example.taskbeats.data.AppDataBase
+import com.example.taskbeats.data.local.local.AppDataBase
 
 class TaskBeatsApplication: Application() {
 

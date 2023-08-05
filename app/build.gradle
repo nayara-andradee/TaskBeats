@@ -17,6 +17,12 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        //para nossa api ficar segura, nao ir para o github
+        Properties properties = new Properties()
+        properties.load(project.rootProject.file('local.properties').newDataInputStream())
+        buildConfigField "String", "API_KEY", "\"${properties.getProperty('API_KEY')}\""
+
     }
 
     buildTypes {
@@ -41,11 +47,29 @@ dependencies {
     implementation 'com.google.android.material:material:1.8.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
 
-    //1 - implementaçao da biblioteca, room
-        def room_version = "2.4.1"
+    //retrofit
+    final retrofitVersion = '2.9.0'
+    final okHttpVersion = '4.9.1'
+   // implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    implementation 'com.google.code.gson:gson:2.10.1'
+    implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofitVersion"
+    implementation "com.squareup.okhttp3:okhttp:$okHttpVersion"
+    implementation "com.squareup.okhttp3:logging-interceptor:$okHttpVersion"
 
+    //biblioteca para trazer uma img da internet
+    implementation "io.coil-kt:coil:2.3.0"
+
+    //1 - implementaçao da biblioteca, room
+        def room_version = "2.5.1"
         implementation "androidx.room:room-runtime:$room_version"
         kapt "androidx.room:room-compiler:$room_version"
+        //biblioteca do coroutines
+        implementation "androidx.room:room-ktx:$room_version"
+
+    //implementaçao da biblioteca fragmets
+    def fragment_version = "1.5.7"
+    implementation "androidx.fragment:fragment-ktx:$fragment_version"
 
 
     //view model
