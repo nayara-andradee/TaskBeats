@@ -37,6 +37,7 @@ class TaskDetailViewModel(
         }
     }
 
+    //implementaçao do viewModelFactory
     companion object{
         fun getVMFactory(application: Application): ViewModelProvider.Factory{
             val dataBaseInstance = (application as TaskBeatsApplication).getAppDataBase()

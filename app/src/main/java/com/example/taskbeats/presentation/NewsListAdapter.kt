@@ -22,15 +22,12 @@ class NewsListAdapter: ListAdapter<News, NewsListViewHolder>(NewsListAdapter) {
             .inflate(R.layout.item_news, parent, false)
         return  NewsListViewHolder(view)
     }
-
     override fun onBindViewHolder(holder: NewsListViewHolder, position: Int) {
         val news = getItem(position)
         holder.bind(news)
     }
-
     //passando o data
     companion object : DiffUtil.ItemCallback<News>() {
-
         override fun areItemsTheSame(oldItem: News, newItem: News): Boolean {
             return oldItem == newItem
         }
@@ -39,14 +36,11 @@ class NewsListAdapter: ListAdapter<News, NewsListViewHolder>(NewsListAdapter) {
                     oldItem.imgUrl == newItem.imgUrl
         }
     }
-
-
 }
 
 class NewsListViewHolder(
     private val view: View
 ) : RecyclerView.ViewHolder(view){
-
     private val tvTitle = view.findViewById<TextView>(R.id.tv_news_title)
     private val imgNews = view.findViewById<ImageView>(R.id.iv_news)
 

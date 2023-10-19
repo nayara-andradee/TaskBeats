@@ -31,7 +31,7 @@
         <item name="android:fontFamily">@font/rubik_medium</item>
         <item name="android:textColor">@color/brown_900</item>
     </style>
-
+//estilo para o toolbar
     <style name="toolbar" parent="Widget.AppCompat.TextView">
         <item name="android:fontFamily">@font/rubik_medium</item>
         <item name="android:textStyle">bold</item>

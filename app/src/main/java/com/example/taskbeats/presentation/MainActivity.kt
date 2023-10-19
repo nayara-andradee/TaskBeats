@@ -9,7 +9,6 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class MainActivity : AppCompatActivity() {
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -20,9 +19,14 @@ class MainActivity : AppCompatActivity() {
         floatActionButton.setOnClickListener{
             openTaskListDetail()
         }
-
         val taskListFragment = TaskListFragment.newInstance()
         val newsListFragment = NewsListFragment.newInstance()
+
+        //responsavel por fazer o rostem do fragment task
+        supportFragmentManager.commit {
+            replace(R.id.fragment_container_view, taskListFragment)
+            setReorderingAllowed(true)
+        }
 
         bottomNaviView.setOnItemSelectedListener{ menuItem ->
             val fragment = when(menuItem.itemId){
@@ -30,6 +34,8 @@ class MainActivity : AppCompatActivity() {
                 R.id.news_list -> newsListFragment
                 else -> taskListFragment
             }
+
+            //responsavel por fazer o rostem do fragment news
             supportFragmentManager.commit {
                 replace(R.id.fragment_container_view, fragment) //erro aqui e so um fragment
                 setReorderingAllowed(true)
@@ -40,6 +46,7 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+    //abrindo uma nova activity
     private fun openTaskListDetail() {
         val intent = TaskDetailActivity.start(this, null)
         startActivity(intent)

@@ -26,18 +26,20 @@ class TaskListFragment : Fragment() {
     private val adapter: TaskListAdapter by lazy {
         TaskListAdapter(::openTaskListDetail)
     }
+    //viewModel, responsavel por trazer a listagem
     private val viewModel: TaskListViewModel by lazy {
         TaskListViewModel.create(requireActivity().application)
     }
 
-    //ciclo de vida
+    //ciclo de vida, criaçao da view
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
+        // Inflate do fragment
         return inflater.inflate(R.layout.fragment_task_list, container, false)
     }
+    //aqui ele ja foi criada a view, e podemos recuperar as views
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -70,7 +72,7 @@ class TaskListFragment : Fragment() {
         viewModel.taskListLiveData.observe(this, listObserver)
     }
 
-    //clik da task, vai para detail
+    //açao do clik da task, vai para Taskdetail
     private fun openTaskListDetail(task: Task) {
         val intent = TaskDetailActivity.start(requireContext(), task)
         requireActivity().startActivity(intent)

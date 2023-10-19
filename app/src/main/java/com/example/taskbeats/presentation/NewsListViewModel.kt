@@ -4,7 +4,6 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.taskbeats.data.local.local.News
 import com.example.taskbeats.data.local.remote.NewsDto
 import com.example.taskbeats.data.local.remote.NewsService
 import com.example.taskbeats.data.local.remote.RetrofitModule
@@ -25,8 +24,9 @@ class NewsListViewModel(
         viewModelScope.launch {
             //caso o app crech try/catch
             try {
-                val response = newsService.fetchNews()
-                _newsListLiveData.value = response.data
+                val topNews = newsService.fetchTopNews().data
+                val allNews = newsService.fetchAllNews().data
+                _newsListLiveData.value = topNews + allNews
             } catch (ex: Exception){
                 ex.printStackTrace()
             }

@@ -33,7 +33,6 @@ class NewsListFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         val rvNewsList = view.findViewById<RecyclerView>(R.id.rv_news)
         rvNewsList.adapter = adapter
 
