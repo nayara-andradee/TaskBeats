@@ -5,6 +5,7 @@ import retrofit2.http.GET
 
 interface NewsService {
 
+    //consumindo o service
     @GET("top?api_token=${BuildConfig.API_KEY}&locale=us")
     suspend fun fetchTopNews(): NewsResponse
 

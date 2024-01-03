@@ -13,16 +13,18 @@ class NewsListViewModel(
     private val newsService: NewsService
 ): ViewModel() {
 
+    //liveData mutable
     private val _newsListLiveData = MutableLiveData<List<NewsDto>>()
     val newsListLiveData: LiveData<List<NewsDto>> = _newsListLiveData
 
+    //iniciou o viewModel ele faz a chamada para o back-end
     init {
         getNewsList()
     }
 
     private fun getNewsList(){
         viewModelScope.launch {
-            //caso o app crech try/catch
+            //caso tenha algum erro com a internet... colocamos try/catch para o app nao da crech
             try {
                 val topNews = newsService.fetchTopNews().data
                 val allNews = newsService.fetchAllNews().data
@@ -35,6 +37,7 @@ class NewsListViewModel(
 
     }
 
+    //criando o service dentro do viewmodel
     companion object {
         fun create(): NewsListViewModel {
             val newsService = RetrofitModule.createNewsService()

@@ -9,6 +9,7 @@ import kotlinx.coroutines.test.setMain
 import org.junit.rules.TestWatcher
 import org.junit.runner.Description
 
+//para os testes rodar com o coroutines
 class MainDispatcherRule @OptIn(ExperimentalCoroutinesApi::class) constructor(
     private val testDispatcher: TestDispatcher =UnconfinedTestDispatcher(),
 ) : TestWatcher() {

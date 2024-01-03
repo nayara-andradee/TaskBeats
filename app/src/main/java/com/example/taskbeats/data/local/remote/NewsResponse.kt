@@ -2,6 +2,7 @@ package com.example.taskbeats.data.local.remote
 
 import com.google.gson.annotations.SerializedName
 
+//serealisando a resposta do Back-End
 data class NewsResponse (
     val data: List<NewsDto>
         )

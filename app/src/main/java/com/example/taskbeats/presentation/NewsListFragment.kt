@@ -18,7 +18,7 @@ class NewsListFragment : Fragment() {
 
     private val adapter = NewsListAdapter()
 
-    //viewModel/LiveData
+    //viewModel das news
     private val viewModel by lazy {
         NewsListViewModel.create()
     }

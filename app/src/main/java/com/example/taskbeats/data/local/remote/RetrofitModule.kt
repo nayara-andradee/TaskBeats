@@ -9,6 +9,7 @@ import retrofit2.create
 
 object RetrofitModule {
 
+    //criando o service
     fun createNewsService(): NewsService {
 
         val logging = HttpLoggingInterceptor()
